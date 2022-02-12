@@ -1,0 +1,59 @@
+.header{
+    // Subistituo o nome padrão dado a todos usando o metodo BEM pelo Parent Selector(-> & <-)
+    font-family: $font-padrao;
+
+    &__logo{
+        text-align: center;
+    }
+    &__img{
+        max-width: 350px;
+    }
+
+    .menu{
+        &__list{
+            @include alinhado;
+            border-top: 1px solid $cinza-claro;
+            border-bottom: 1px solid $cinza-claro;
+            margin: 1rem auto;
+
+            @include for-phone-only{
+                width: 90%;
+                padding: 15px 0;
+                flex-wrap: wrap;
+            }
+            @include for-tablet-only{
+                width: 80%;
+                padding: 25px 0;
+            }
+            @include for-dasktop-only{
+                width: 80%;
+                padding: 20px 0;
+            }
+        }
+        &__links{
+            position: relative;
+            @include for-phone-only{
+                padding: 5px 0;
+            }
+            &:not(:last-child)::after{
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: -0.1rem;
+                margin: auto;
+                height: 15px;
+                width: 1px;
+                background: $cinza-claro;
+            }
+        }
+        &__link{
+            padding: 0 25px;
+            color: $cinza-escuro;
+            &:hover{
+                color: $roxo-claro;
+                transition: 1s all;
+            }
+        }
+    }
+}

@@ -1,0 +1,74 @@
+//                          VARIAVEIS
+
+/// cores principais
+$roxo-claro: #a050be;
+$cinza-escuro: #464646;
+$cinza-claro: #eaeaeb;
+$amarelo: #FABE50;
+// fontes
+$font-padrao: Arial, Helvetica, sans-serif;
+// medidas
+$img-width: 45%;
+
+// placeholder selector (%) -> Folha de estilo unica
+%no-decoration {text-decoration: none;}
+%u-decoration {text-decoration: underline;}
+
+// Mixins usando para conjunto de estilos
+@mixin alinhado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin reset-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+@mixin flx($propriedade, $centralizacao){
+    display: flex;
+    align-items: center;
+    #{$propriedade}: $centralizacao;
+}
+
+@mixin for-phone-only {
+    @media (max-width: 767.98px){
+        @content;
+    }
+}
+@mixin for-tablet-only {
+    @media (min-width: 768px) and (max-width: 1199.98px){
+        @content;
+    }
+}
+@mixin for-dasktop-only {
+    @media (min-width: 1200px){
+        @content;
+    }
+}
+
+// logica para converter para rem
+@function calculateRem($size){
+    @return $size / 16px * 1rem;
+}
+@mixin fontSize($size) {
+    font-size: calculateRem($size);
+}
+
+// -------------------------------------
+// EACH
+$directions: top, bottom, left, right;
+$margin-size: 10px;
+
+// No each EU posso escolher qual dos elementos dentro do directions eu vou chamar, posso chamar um de cada vez e acessá-los individualmente 
+
+@each $direction in $directions{
+    // criou ----------------- abriu{valor}
+    %margin-zero-#{$direction} {margin-#{$direction}: 0;}
+    %default-margin-#{$direction} {margin-#{$direction}: $margin-size}
+    %double-margin-#{$direction} {margin-#{$direction}: $margin-size*2}
+    %divide-margin-#{$direction} {margin-#{$direction}: $margin-size/2}
+    %margin-auto-#{$direction} {margin-#{$direction}: auto;}
+}
+

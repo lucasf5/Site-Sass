@@ -1,0 +1,63 @@
+.about{
+    width: 80%;
+    margin: 0 auto 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    &__title{
+        background-color: $cinza-claro;
+        text-align: center;
+        padding: 20px;
+    }
+    &__h1{
+        @include fontSize(22px);
+        color: $cinza-escuro;
+        letter-spacing: 1px;
+        margin: 5px 0 10px 0;
+    }
+    .breadcrumb{
+        @include alinhado;
+
+        &__link{
+            @include fontSize(12px);
+            color: $cinza-escuro;
+            &:hover{
+                text-decoration: wavy;
+                color: $roxo-claro;
+            }
+        }
+        &__img{
+            width: 10px;
+            margin: 8px;
+        }
+    }
+    &__img{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    &__intro{
+        font-weight: 100;
+        color: $cinza-escuro;
+        width: 70%;
+        margin: 30px auto;
+        text-align: center;
+        font-size: 1rem;
+    }
+    &__split{
+        @include alinhado;
+        @include for-phone-only{
+            flex-direction: column;
+        }
+
+    }
+    &__img-description{
+        width: $img-width;
+    }
+    &__txt{
+        // interpolação
+        width: calc(95% - #{$img-width});
+    }
+    &__p{
+        @include fontSize(14px);
+        padding: 10px;
+        color: $cinza-escuro;
+    }
+}
